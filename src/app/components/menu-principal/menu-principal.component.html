@@ -1,0 +1,24 @@
+<mat-toolbar style="background-color: #eeeeee;" *ngIf="user$ | async">
+        <button mat-button (click)="ir('home')">Home</button>
+        <button mat-button [matMenuTriggerFor]="Item2">Item2</button>
+        <button mat-button [matMenuTriggerFor]="Item3">Item3</button>
+        <button mat-button [matMenuTriggerFor]="Item4">Item4</button>
+        <button mat-button (click)="ir('quien_soy')">Quien soy</button>
+        <span class="example-spacer"></span>
+        
+        <!--
+        <button mat-icon-button ><mat-icon >account_circle</mat-icon></button>
+        <button mat-button >{{username}}</button>-->
+        <button mat-button (click)="logout()">Salir</button>
+
+        <mat-menu #Item2="matMenu">
+            <button mat-menu-item (click)="ir('home')">Item2</button>
+        </mat-menu>
+        <mat-menu #Item3="matMenu">
+            <button mat-menu-item (click)="ir('home')">Item3</button>
+        </mat-menu>
+        <mat-menu #Item4="matMenu">
+            <button mat-menu-item (click)="ir('home')">Item4</button>
+        </mat-menu>
+        
+</mat-toolbar>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,21 +9,12 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
 
-  constructor(public router:Router){
+  constructor(){
 
   }
   
   ngOnInit(): void {
-    if(localStorage.getItem('isLoggedIn') != "true"){
-      this.router.navigate(["login"]);
-    }
   }
-
-  salir(){
-    localStorage.removeItem("isLoggedIn");
-    this.router.navigate([""]);
-  }
-
 
   
 }

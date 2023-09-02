@@ -1,0 +1,28 @@
+.container-root {
+    display: grid;
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px auto;
+    grid-template-areas: 
+      "menu "
+      "main "
+      ;
+  }
+  
+   .item-menu {
+    grid-area: menu;
+   
+  }
+  .item-main {
+    grid-area: main;
+    display: grid;
+    margin-top: 25px;
+    grid-template-columns: 5% 90% 5%  ; 
+    grid-template-rows: auto;
+    padding-top: 2px;
+  }
+  
+  .item-main-contenido {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  }

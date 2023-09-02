@@ -1,21 +1,32 @@
-<body class="text-center" style="margin-top: 8%;">
-    <form class="form-signin">
-      <div class="page">
-        <div class="circle">
-            <img class="mb-4" src="../assets/logo.png" alt="">
+<body class="text-center" style="justify-content: center;">
+      <div class="form-signin">
+        <form  [formGroup]="formLogin">
+          <div class="page">
+            <div class="circle">
+                <img class="mb-4" src="../assets/logo.png" alt="">
+            </div>
         </div>
-    </div>
-      <h1 class="h3 mb-3 font-weight-normal">Iniciar sesion</h1>
-      <input type="usuario" class="form-control" placeholder="Usuario" [(ngModel)]="usuario" name="usuario">
-      <br>
-      <input type="password"  class="form-control" placeholder="Contraseña" [(ngModel)]="contrasenia" name="contrasenia">
-      <div class="checkbox mb-3">
-        <label>
-          <br>
-          <input type="checkbox" value="remember-me"> Recordarme
-        </label>
+          <h1 class="h3 mb-3 font-weight-normal">Iniciar sesion</h1>
+          <input type="email" class="form-control" placeholder="Email" formControlName="email" name="email">
+          <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Password" formControlName="password" name="password">
+          <!--<div class="checkbox mb-3">
+            <label>
+              <br>
+              <input type="checkbox" value="remember-me"> Recordarme
+            </label>
+          </div>-->
+          <div *ngIf="!formLogin.valid && hasRequiredError()">
+            <mat-error style="width: 100%;" >
+              Por favor, completa todos los campos requeridos.
+            </mat-error>
+          </div>
+        </form>
+        <div class="row">
+          <button style="margin-top: 10%;" class="btn btn-lg btn-primary btn-block"  (click)="ingresar()">Ingresar</button>
+          <button style="margin-top: 10%;" class="btn btn-lg btn-primary btn-block"  (click)="irRegistro()" >Registrarse</button>
+        </div>
+        <br>
+        <br>
+        <p class="row footer text-center py-4">&copy; 2023 PAC-Games. Todos los derechos reservados.</p>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="ingresar()">Ingresar</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
-    </form>
 </body>

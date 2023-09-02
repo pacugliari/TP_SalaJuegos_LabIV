@@ -1,1 +1,28 @@
-<p>registro works!</p>
+<body class="text-center" style="justify-content: center;">
+      <div class="form-signin">
+        <form  [formGroup]="formReg">
+          <div class="page">
+            <div class="circle">
+                <img class="mb-4" src="../assets/logo.png" alt="">
+            </div>
+          </div>
+          <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
+          <input type="email" class="form-control" placeholder="Email"  formControlName="email" name="email">
+          <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Ingrese su password"  formControlName="password" name="password">
+          <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Vuelva ingresar su password" formControlName="verifyPassword"name="verifyPassword">
+          <div *ngIf="!formReg.valid && hasRequiredError()">
+            <mat-error style="width: 100%;">
+              Por favor, completa todos los campos requeridos.
+            </mat-error>
+          </div>
+        </form>
+        <div class="row">
+          <button style="margin-top: 10%;" class="btn btn-lg btn-primary btn-block" [disabled]="!formReg.valid" (click)="registrar()">Registrarse</button>
+          <button style="margin-top: 10%;" class="btn btn-lg btn-primary btn-block" (click)="irLogin()" >Ir login</button>
+        </div>
+        <br>
+        <br>
+        <p class="row footer text-center py-4">&copy; 2023 PAC-Games. Todos los derechos reservados.</p>
+      </div>
+</body>
+

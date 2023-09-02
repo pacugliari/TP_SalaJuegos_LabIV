@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,23 +10,40 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
 
-  usuario = "";
-  contrasenia ="";
+  formLogin = this.formBuilder.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
-  constructor(public router:Router){
+  constructor(private router:Router,
+              private formBuilder: FormBuilder,
+              private userService: UserService){
   }
 
   ngOnInit(): void {
   }
 
   ingresar(){
-  if (this.usuario === 'donna' && this.contrasenia === 'teamo') {
-    localStorage.setItem('isLoggedIn', 'true');
-    alert('Ingreso correctamente');
-    this.router.navigate([""]);
-  } else {
-    alert('Ingreso fallo');
+    this.userService.login(this.formLogin.value)
+    .then(response =>{
+      console.log(response);
+      this.router.navigate(["home"])
+    })
+    .catch(error => console.log(error))
   }
+
+  hasRequiredError(): boolean | undefined{
+    const emailControl = this.formLogin.get('email');
+    const passwordControl = this.formLogin.get('password');
+
+    return (
+      (emailControl?.touched && emailControl.hasError('required')) ||
+      (passwordControl?.touched && passwordControl.hasError('required'))
+    );
+  }
+
+  irRegistro(){
+    this.router.navigate(["registro"]);
   }
 
 
