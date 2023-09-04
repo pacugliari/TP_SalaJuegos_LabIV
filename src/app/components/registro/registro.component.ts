@@ -12,9 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 export class RegistroComponent {
 
   formReg = this.formBuilder.group({
-    email: ['', Validators.required,Validators.email],
-    password: ['', Validators.required],
-    verifyPassword: ['', Validators.required]
+    email: ['', [Validators.required,Validators.email]],
+    password: ['', [Validators.required,Validators.minLength(6)]],
+    verifyPassword: ['', [Validators.required,Validators.minLength(6)]]
   });
 
   constructor(private formBuilder: FormBuilder,
@@ -48,9 +48,20 @@ export class RegistroComponent {
     if(this.verificarPasswords()){
       this.userService.register(this.formReg.value)
       .then(response =>{
-        console.log(response);
+        this.userService.login(this.formReg.value)    
+          .then(() =>{
+            this.mensajes.informacion("Usuario autorizado");
+            this.router.navigate(["home"])
+          })
+          .catch((error) => {
+            this.mensajes.error("Usuario no autorizado");
+          })
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        if(error.code === "auth/email-already-in-use"){
+          this.mensajes.error("El usuario ya se encuentra registrado")
+        }
+      })
     }else
       this.mensajes.error("Las contraseñas no son iguales");
   }

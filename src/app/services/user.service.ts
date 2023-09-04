@@ -20,16 +20,4 @@ export class UserService{
     logout(){
         return signOut(this.auth);
     }
-
-    async estaLogueado() {
-        return new Promise<boolean>((resolve) => {
-          this.auth.onAuthStateChanged(function(user) {
-            if (user) {
-              resolve(true);
-            } else {
-              resolve(false);
-            }
-          });
-        });
-      }
 }

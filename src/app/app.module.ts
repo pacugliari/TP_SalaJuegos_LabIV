@@ -18,6 +18,8 @@ import { MenuPrincipalComponent } from './components/menu-principal/menu-princip
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip'; // Importa MatTooltipModule
+import { MatIconModule } from '@angular/material/icon'; // Importa MatIconModule
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatMenuModule,
     MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth())
   ],

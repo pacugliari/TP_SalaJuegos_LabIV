@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'home', component: HomeComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))},
   { path: 'login', component: LoginComponent,...canActivate(()=> redirectLoggedInTo(['/home']))},
-  { path: 'registro', component: RegistroComponent },
+  { path: 'registro', component: RegistroComponent,...canActivate(()=> redirectLoggedInTo(['/home']))},
   { path: 'quien_soy', component: QuienSoyComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))},
 ];
 

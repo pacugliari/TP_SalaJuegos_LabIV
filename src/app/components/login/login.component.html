@@ -1,5 +1,5 @@
 <body class="text-center" style="justify-content: center;">
-      <div class="form-signin">
+      <div class="form-signin" style="margin-top: -5%;">
         <form  [formGroup]="formLogin">
           <div class="page">
             <div class="circle">
@@ -9,12 +9,7 @@
           <h1 class="h3 mb-3 font-weight-normal">Iniciar sesion</h1>
           <input type="email" class="form-control" placeholder="Email" formControlName="email" name="email">
           <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Password" formControlName="password" name="password">
-          <!--<div class="checkbox mb-3">
-            <label>
-              <br>
-              <input type="checkbox" value="remember-me"> Recordarme
-            </label>
-          </div>-->
+          <input type="checkbox" value="ingresoAnonimo" (change)="onCheckboxChange($event)"> Ingreso anonimo
           <div *ngIf="!formLogin.valid && hasRequiredError()">
             <mat-error style="width: 100%;" >
               Por favor, completa todos los campos requeridos.
@@ -22,7 +17,7 @@
           </div>
         </form>
         <div class="row">
-          <button style="margin-top: 10%;" class="btn btn-lg btn-primary btn-block"  (click)="ingresar()">Ingresar</button>
+          <button style="margin-top: 10%;" class="btn btn-lg btn-primary btn-block" [disabled]="!formLogin.valid && !ingresoAnonimo" (click)="ingresar()">Ingresar</button>
           <button style="margin-top: 10%;" class="btn btn-lg btn-primary btn-block"  (click)="irRegistro()" >Registrarse</button>
         </div>
         <br>

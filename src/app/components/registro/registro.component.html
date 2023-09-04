@@ -1,5 +1,5 @@
 <body class="text-center" style="justify-content: center;">
-      <div class="form-signin">
+      <div class="form-signin" style="margin-top: -5%;">
         <form  [formGroup]="formReg">
           <div class="page">
             <div class="circle">
@@ -8,8 +8,10 @@
           </div>
           <h1 class="h3 mb-3 font-weight-normal">Registrarse</h1>
           <input type="email" class="form-control" placeholder="Email"  formControlName="email" name="email">
-          <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Ingrese su password"  formControlName="password" name="password">
-          <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Vuelva ingresar su password" formControlName="verifyPassword"name="verifyPassword">
+          <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Ingrese su password"  formControlName="password"
+            name="password" [matTooltip]="'La contraseña debe tener al menos 6 caracteres'">
+          <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Vuelva ingresar su password" formControlName="verifyPassword"
+            name="verifyPassword" [matTooltip]="'La contraseña debe tener al menos 6 caracteres'">
           <div *ngIf="!formReg.valid && hasRequiredError()">
             <mat-error style="width: 100%;">
               Por favor, completa todos los campos requeridos.
