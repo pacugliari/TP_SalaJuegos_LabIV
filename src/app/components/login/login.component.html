@@ -9,7 +9,7 @@
           <h1 class="h3 mb-3 font-weight-normal">Iniciar sesion</h1>
           <input type="email" class="form-control" placeholder="Email" formControlName="email" name="email">
           <input style="margin-top: 10%;" type="password"  class="form-control" placeholder="Password" formControlName="password" name="password">
-          <input type="checkbox" value="ingresoAnonimo" (change)="onCheckboxChange($event)"> Ingreso anonimo
+          <input style="margin-top: 10%;" type="checkbox" value="ingresoAnonimo" (change)="onCheckboxChange($event)"> Ingreso anonimo
           <div *ngIf="!formLogin.valid && hasRequiredError()">
             <mat-error style="width: 100%;" >
               Por favor, completa todos los campos requeridos.
@@ -22,6 +22,6 @@
         </div>
         <br>
         <br>
-        <p class="row footer text-center py-4">&copy; 2023 PAC-Games. Todos los derechos reservados.</p>
+        
       </div>
 </body>

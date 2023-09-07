@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { canActivate, redirectUnauthorizedTo,redirectLoggedInTo } from '@angular/fire/auth-guard'
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent,...canActivate(()=> redirectLoggedInTo(['/home']))},
   { path: 'registro', component: RegistroComponent,...canActivate(()=> redirectLoggedInTo(['/home']))},
   { path: 'quien_soy', component: QuienSoyComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))},
+  { path: '**', component: ErrorComponent}// ** : RUTA POR DEFECTO
 ];
 
 @NgModule({

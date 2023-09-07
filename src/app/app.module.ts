@@ -19,7 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; // Importa MatTooltipModule
-import { MatIconModule } from '@angular/material/icon'; // Importa MatIconModule
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
