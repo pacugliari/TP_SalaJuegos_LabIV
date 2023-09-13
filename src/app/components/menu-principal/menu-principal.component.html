@@ -1,4 +1,4 @@
-<mat-toolbar style="background-color: #eeeeee;" *ngIf="user$ | async">
+<mat-toolbar style="background-color: #eeeeee;" *ngIf="user$ | async as user">
         <!--<button mat-button (click)="ir('home')">Home</button>-->
         <button mat-button [matMenuTriggerFor]="Item2">Juegos</button>
         <button mat-button >Chat</button>
@@ -7,9 +7,25 @@
         <span class="example-spacer"></span>
         
         
-        <button mat-icon-button ><mat-icon >account_circle</mat-icon></button>
-        <button mat-button >Datos usuario</button>
+        <!--<button mat-icon-button (click)="cambiarIcono()"><mat-icon >account_circle</mat-icon></button>-->
+        <button mat-icon-button (click)="cambiarIcono()" *ngIf="user.photoURL !== null" class="centered-button">
+            <img [src]="user.photoURL" class="centered-image">
+          </button>
+          
+        <button mat-icon-button (click)="cambiarIcono()" *ngIf="user.photoURL === null">
+        <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <button mat-button  [matMenuTriggerFor]="user.email !== 'anonimo@anonimo.com' ? nombre : null">{{user.displayName ? user.displayName : user.email}}</button>
         <button mat-button (click)="logout()">Salir</button>
+
+        <mat-menu  #nombre="matMenu" class="custom-menu">
+            <div class="menu-content" >
+              <input style="margin-left: 5%;" class="edit-input" (click)="$event.stopPropagation()" matInput placeholder="Editar Nombre" [(ngModel)]="nombreModificado">
+              <button class="edit-button"  style="margin-left: 2%;" class="button" (click)="modificarNombre()">Guardar</button>
+            </div>
+        </mat-menu>
+          
 
         <mat-menu #Item2="matMenu">
             <button mat-menu-item (click)="ir('home')">Ahorcado</button>
@@ -17,7 +33,7 @@
             <button mat-menu-item (click)="ir('home')">Preguntados</button>
             <button mat-menu-item (click)="ir('home')">Juego Propio</button>
         </mat-menu>
-        <!--<mat-menu #Item3="matMenu">
+        <!--<mat-menu #Item3="matMenu"> (click)="cargarNombre()"
             <button mat-menu-item (click)="ir('home')">Item2</button>
         </mat-menu>
         <mat-menu #Item4="matMenu">

@@ -2,3 +2,54 @@
     flex: 1 1 auto;
   }
 
+  /* En tu archivo CSS o SCSS */
+.custom-menu {
+  width: auto; /* Opcional: ajusta según tus necesidades */
+}
+
+.menu-content {
+  display: flex;
+  align-items: center;
+}
+
+.edit-input {
+  width: 60%; /* Ancho del input */
+}
+
+.edit-button {
+  margin-top: 2%;
+  margin-left: 5%;
+  /* Estilos para el botón */
+}
+
+/* Estilos para el ícono dentro del input */
+.mat-form-field-prefix {
+  color: rgba(0, 0, 0, 0.54); /* Color del ícono */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el ícono */
+}
+
+/* Estilos adicionales para el input */
+.mat-input-element {
+  width: 50%; /* Ancho del input */
+}
+
+/* Estilos para el botón */
+.edit-button {
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
+/* Centrar verticalmente y horizontalmente el contenido del botón */
+.centered-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Centrar la imagen dentro del botón */
+.centered-image {
+  max-width: 100%; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+  max-height: 100%; /* Ajusta el tamaño máximo de la imagen según sea necesario */
+}
+
+
