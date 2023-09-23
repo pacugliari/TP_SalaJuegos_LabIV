@@ -1,5 +1,57 @@
 
 
+<button class="round-button fixed-bottom fixed-right m-3"  *ngIf="!chatExpanded;else elseBlock" (click)="toggleChat()">
+    <i  class="fas fa-comment" (click)="toggleChat()" ></i>
+</button>
+
+
+<ng-template #elseBlock>
+    <div class="chat-container fixed-bottom fixed-right m-3"  >
+        <div class="chat">
+            <div class="chat-header">
+                <h2>Chat</h2>
+                <button class="close-button"(click)="toggleChat()">
+                    <div class="close-icon">&times;</div>
+                </button>
+            </div>
+            <!--<div class="chat-messages">
+                <div class="message sender">
+                    <strong>Tú:</strong> 
+                    <p>Hola, ¿cómo estás?</p>
+                    <span class="time">10:00 AM</span>
+                </div>
+                <div class="message receiver">
+                    <strong>Contacto:</strong>
+                    <p>¡Hola! Estoy bien, gracias.</p>
+                    <span class="time">10:05 AM</span>
+                </div>
+                <div class="message sender">
+                    <strong>Tú:</strong> 
+                    <p>Otro mensaje</p>
+                    <span class="time">10:10 AM</span>
+                </div>
+                <div class="message receiver">
+                    <strong>Contacto:</strong> 
+                    <p>Otro mensaje</p>
+                    <span class="time">10:15 AM</span>
+                </div>
+            </div>-->
+            <div class="chat-messages">
+                <div *ngFor="let mensaje of chatService.listaChat" class="message" [ngClass]="{'sender': mensaje.uid === usuario.uid, 'receiver': mensaje.uid !== usuario.uid}">
+                  <strong>{{ mensaje.uid === usuario.uid ? 'Tú' : mensaje.nombre }}:</strong>
+                  <p>{{ mensaje.mensaje }}</p>
+                  <span class="time">{{ mensaje.fecha }}</span>
+                </div>
+              </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Escribe un mensaje" [(ngModel)]="mensaje">
+                <button (click)="enviar()">Enviar</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
 
 
 
