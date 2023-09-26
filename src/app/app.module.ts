@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; // Importa MatTooltipModule
 import { MatIconModule } from '@angular/material/icon';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     QuienSoyComponent,
     ErrorComponent,
     MenuPrincipalComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent,...canActivate(()=> redirectLoggedInTo(['/home']))},
   { path: 'registro', component: RegistroComponent,...canActivate(()=> redirectLoggedInTo(['/home']))},
   { path: 'quien_soy', component: QuienSoyComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))},
+  { path: 'juegos', loadChildren: () => import('./components/juegos/juegos.module').then(m => m.JuegosModule) },
   { path: '**', component: ErrorComponent },// ** : RUTA POR DEFECTO
 ];
 

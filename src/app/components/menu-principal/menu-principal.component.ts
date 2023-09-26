@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { authState,updateProfile,getAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { MensajesService } from 'src/app/services/mensajes.service';
 import { User } from 'firebase/auth';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-menu-principal',
@@ -14,6 +15,7 @@ import { User } from 'firebase/auth';
 export class MenuPrincipalComponent implements OnInit {
   user$?: Observable<any | null>;
   nombreModificado = "";
+  @Output() ocultarChat = new EventEmitter<boolean>();
 
   constructor(private router:Router,
               private userService:UserService,
@@ -39,6 +41,7 @@ export class MenuPrincipalComponent implements OnInit {
   }
 
   async logout(){
+    this.ocultarChat.emit(true);
     this.userService.logout()
     .then(response =>{
       this.nombreModificado = "";
