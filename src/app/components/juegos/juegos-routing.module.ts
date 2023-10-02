@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { MayormenorComponent } from './mayormenor/mayormenor.component';
 import { PreguntadosComponent } from './preguntados/preguntados.component';
+import { AtrapalafrutaComponent } from './atrapalafruta/atrapalafruta.component';
 
 
 
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'preguntados',
     component: PreguntadosComponent,
+  },
+  {
+    path: 'atrapalafruta',
+    component: AtrapalafrutaComponent,
   },
 ];
 

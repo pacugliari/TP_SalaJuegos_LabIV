@@ -22,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip'; // Importa MatTool
 import { MatIconModule } from '@angular/material/icon';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ChatComponent } from './components/chat/chat.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ChatComponent } from './components/chat/chat.component';
     MatTooltipModule,
     MatIconModule,
     FormsModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())

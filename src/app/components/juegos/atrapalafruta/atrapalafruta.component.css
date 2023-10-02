@@ -1,0 +1,35 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  
+  canvas {
+    border: 4px solid black;
+    margin-top: 10px;
+    background-color: skyblue;
+    text-align: center;
+  }
+  
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+  
+  /* Estilo para el jugador */
+  .blue {
+    background-color: blue;
+  }
+  
+  /* Estilo para las frutas */
+  .red {
+    background-color: red;
+  }
+  
+  /* Añade más estilos según sea necesario */
