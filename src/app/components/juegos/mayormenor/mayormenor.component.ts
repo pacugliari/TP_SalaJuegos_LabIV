@@ -15,6 +15,7 @@ export class MayormenorComponent {
   cartaActual?: Carta;
   cartaSiguiente?: Carta;
   resultado?: string;
+  puntaje : number = 0;
 
   constructor() { }
 
@@ -43,23 +44,25 @@ export class MayormenorComponent {
     return this.mazo[indice];
   }
 
-  verificarAdivinanza(esMayor: boolean) {
+  verificarAdivinanza(opcion: string) {
     this.cartaActual = this.cartaSiguiente;
     this.cartaSiguiente = this.obtenerCartaAleatoria();
 
     console.log(this.cartaActual)
     console.log(this.cartaSiguiente)
-    if ((esMayor && this.cartaActual &&  this.cartaSiguiente.numero > this.cartaActual.numero) ||
-        (!esMayor && this.cartaActual &&  this.cartaSiguiente.numero < this.cartaActual.numero)) {
+    if ((opcion === 'MAYOR' && this.cartaActual &&  this.cartaSiguiente.numero > this.cartaActual.numero) ||
+        (opcion === 'MENOR' && this.cartaActual &&  this.cartaSiguiente.numero < this.cartaActual.numero) ||
+        (opcion === 'IGUAL' && this.cartaActual &&  this.cartaSiguiente.numero === this.cartaActual.numero)) {
       this.resultado = 'Correcto';
-    } else {
+      this.puntaje++;
+    }else {
       this.resultado = 'Incorrecto';
     }
   }
 
   obtenerRutaImagen(carta: any): string {
-    const rutaBase = 'assets/cartas/';
-    const nombreArchivo = `${carta.numero}_${carta.palo}.png`;
+    const rutaBase = '../../../../assets/mayormenor/';
+    const nombreArchivo = `${carta.numero}.${carta.palo}.png`;
     return `${rutaBase}${nombreArchivo}`;
   }
 }

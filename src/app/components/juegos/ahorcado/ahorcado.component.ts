@@ -14,6 +14,7 @@ export class AhorcadoComponent {
   intentos = 0;
   gano = false;
   perdio = false;
+  
   letras = [
     "a",
     "b",
@@ -42,6 +43,7 @@ export class AhorcadoComponent {
     "y",
     "z"
   ];
+  botonesHabilitados: boolean[] = Array(this.letras.length).fill(true); // Inicialmente, todos los botones están habilitados
 
    palabras: string[] = [
     "Manzana",
@@ -95,8 +97,8 @@ export class AhorcadoComponent {
     "Sirena",
     "Cepillo"    
   ];
-  palabra = this.palabraAleatoria();
-  
+  palabra = this.palabraAleatoria().toLowerCase();
+    
    palabraAleatoria(): string {
     const indiceAleatorio = Math.floor(Math.random() * this.palabras.length);
     return this.palabras[indiceAleatorio];
@@ -105,9 +107,15 @@ export class AhorcadoComponent {
   constructor(private router :Router) {
     this.palabraOculta = "_ ".repeat(this.palabra.length);
   }
+
   comprobar(letra:any) {
     this.existeLetra(letra);
     const palabraOcultaArreglo = this.palabraOculta.split(" ");
+
+    const indice = this.letras.indexOf(letra);
+    if (indice !== -1) {
+      this.botonesHabilitados[indice] = false;
+    }
 
     for (let i = 0; i <= this.palabra.length; i++) {
       if (this.palabra[i] === letra) {

@@ -28,8 +28,9 @@
         <div class="col text-center">
           <button
             (click)="comprobar(letra)"
-            *ngFor="let letra of letras"
+            *ngFor="let letra of letras;let i = index"
             class="btn btn-primary"
+            [disabled]="!botonesHabilitados[i]"
           >
             {{letra.toUpperCase()}}
           </button>

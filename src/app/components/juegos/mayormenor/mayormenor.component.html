@@ -1,17 +1,24 @@
-<div class="container" style="margin-top: 15%;">
+<div class="container" style="margin-top: 8%;">
     <h1 class="text-primary">Mayor o Menor</h1>
+    <br>
     <div class="carta">
-      <img [src]="obtenerRutaImagen(cartaActual)" alt="{{ cartaActual?.numero }} de {{ cartaActual?.palo }}">
+      <img [src]="obtenerRutaImagen(cartaSiguiente)" alt="{{ cartaSiguiente?.numero }} de {{ cartaSiguiente?.palo }}">
+      <img src='../../../../assets/mayormenor/reverso.png' alt="{{ cartaActual?.numero }} de {{ cartaActual?.palo }}">
+      <div class="score" style="margin-left: 5%;">
+        <span class="score-label">Puntaje:</span>
+        <span class="score-value">{{puntaje}}</span>
+      </div>
     </div>
     <div>
-      <h2 class="text-primary">¿La siguiente carta será mayor o menor?</h2>
-      <button class="btn btn-warning" (click)="verificarAdivinanza(true)">Mayor</button>
-      <button class="btn btn-warning" >Igual</button>
-      <button class="btn btn-warning" (click)="verificarAdivinanza(false)">Menor</button>
+      <br>
+      <h2 class="text-primary">¿La siguiente carta será mayor, menor o igual?</h2>
+      <button class="btn btn-warning" (click)="verificarAdivinanza('MAYOR')">Mayor</button>
+      <button class="btn btn-warning" (click)="verificarAdivinanza('IGUAL')">Igual</button>
+      <button class="btn btn-warning" (click)="verificarAdivinanza('MENOR')">Menor</button>
     </div>
     <div *ngIf="resultado !== ''">
-      <h2 style="color: #fe655c;">Resultado: {{ resultado }}</h2>
-      <!--<button (click)="iniciarJuego()">Jugar de Nuevo</button>-->
+      <h2 *ngIf="resultado === 'Incorrecto'" style="color: #fe655c;">Resultado: {{ resultado }}</h2>
+      <h2 *ngIf="resultado === 'Correcto'" style="color: green;">Resultado: {{ resultado }}</h2>
     </div>
 </div>
   
