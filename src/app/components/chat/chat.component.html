@@ -37,7 +37,7 @@
                 </div>-->
                 <div class="chat-messages">
                     <div *ngFor="let mensaje of chatService.listaChat" class="message" [ngClass]="{'sender': mensaje.uid === usuario.uid, 'receiver': mensaje.uid !== usuario.uid}">
-                      <strong>{{ mensaje.uid === usuario.uid ? 'Tú' : mensaje.nombre }}:</strong>
+                      <strong>{{ mensaje.uid === usuario.uid ? 'Tú' : mensaje.nombre}}:</strong>
                       <p>{{ mensaje.mensaje }}</p>
                       <span class="time">{{ mensaje.fecha }}</span>
                     </div>

@@ -178,6 +178,20 @@ export class PerrosService {
 
     opcionesSeleccionadas.push(this.razas[indiceAleatorio2]);
 
+    let indiceAleatorio3;
+    do {
+      indiceAleatorio3 = Math.floor(Math.random() * this.razas.length);
+    } while (indiceAleatorio3 === indiceAleatorio1 || indiceAleatorio3 === indiceAleatorio2);
+
+    opcionesSeleccionadas.push(this.razas[indiceAleatorio3]);
+
+    let indiceAleatorio4;
+    do {
+      indiceAleatorio4 = Math.floor(Math.random() * this.razas.length);
+    } while (indiceAleatorio4 === indiceAleatorio1 || indiceAleatorio4 === indiceAleatorio2 || indiceAleatorio4 === indiceAleatorio3);
+
+    opcionesSeleccionadas.push(this.razas[indiceAleatorio4]);
+
     return opcionesSeleccionadas;
   }
   

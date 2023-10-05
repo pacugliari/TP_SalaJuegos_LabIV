@@ -1,9 +1,12 @@
 <div class="container">
     <h1 class="text-primary">Preguntados</h1>
     <h3>Que raza de perro es ?</h3>
+    <h3>Puntuación: {{ puntaje }}</h3>
     <img [src]=imagen alt="Imagen de la pregunta">
     <div class="options">
-        <button class="btn btn-warning" style="width: 100%;" id="opcion1">{{opcionUno}}</button>
-        <button class="btn btn-warning" style="width: 100%;margin-left: 5%;" id="opcion2">{{opcionDos}}</button>
+        <button class="btn btn-warning" style="width: 100%;" id="opcion1" (click)="verificarRespuesta(opcionUno)">{{opcionUno}}</button>
+        <button class="btn btn-warning" style="width: 100%;margin-left: 5%;" id="opcion2" (click)="verificarRespuesta(opcionDos)">{{opcionDos}}</button>
+        <button class="btn btn-warning" style="width: 100%;margin-left: 5%" id="opcion1" (click)="verificarRespuesta(opcionTres)">{{opcionTres}}</button>
+        <button class="btn btn-warning" style="width: 100%;margin-left: 5%;" id="opcion2" (click)="verificarRespuesta(opcionCuatro)">{{opcionCuatro}}</button>
     </div>
 </div>
