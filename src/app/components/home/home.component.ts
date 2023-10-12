@@ -7,7 +7,12 @@ import { Component} from '@angular/core';
 })
 export class HomeComponent {
 
-
+ cards = [
+    { title: 'Ahorcado', image: '../../../assets/ahorcado.png' },
+    { title: 'Mayor o menor', image: '../../../assets/mayorMenor.png' },
+    { title: 'Preguntados', image: '../../../assets/preguntados.png' },
+    { title: 'Atrapa la fruta', image: '../../../assets/atrapaFruta.png' }
+  ];
   
 
 

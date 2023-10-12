@@ -1,6 +1,38 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 130%;
+  height: 105%;
+  justify-content: center;
+  text-align: center;
+}
 
+.card {
+  border: 1px solid #ddd;
+  text-align: center;
+  background-color: #ffa900;
+  transition: transform 0.2s;
+}
 
+.card:hover {
+  transform: scale(1.05);
+}
 
+.card a {
+  text-decoration: none;
+  color: #333;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
 
 
 

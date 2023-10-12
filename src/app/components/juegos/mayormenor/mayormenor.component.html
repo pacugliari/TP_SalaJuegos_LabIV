@@ -1,14 +1,14 @@
-<div class="container" style="margin-top: 8%;">
+<div class="container" style="margin-top: 1%;">
     <h1 class="text-primary">Mayor o Menor</h1>
     <br>
     <div class="carta">
       <img [src]="obtenerRutaImagen(cartaSiguiente)" alt="{{ cartaSiguiente?.numero }} de {{ cartaSiguiente?.palo }}">
       <img src='../../../../assets/mayormenor/reverso.png' alt="{{ cartaActual?.numero }} de {{ cartaActual?.palo }}">
-      <div class="score" style="margin-left: 5%;">
-        <span class="score-label">Puntaje:</span>
-        <span class="score-value">{{puntaje}}</span>
-      </div>
     </div>
+    <div class="score-container">
+      <div class="score">Score: {{puntaje}}</div>
+      <button class="score-button" (click)="guardarPuntaje()">Guardar Puntaje</button>
+  </div>
     <div>
       <br>
       <h2 class="text-primary">¿La siguiente carta será mayor, menor o igual?</h2>

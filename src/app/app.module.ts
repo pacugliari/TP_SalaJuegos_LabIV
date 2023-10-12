@@ -23,6 +23,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ChatComponent } from './components/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultadosComponent } from './components/resultados/resultados.component';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     ErrorComponent,
     MenuPrincipalComponent,
     ChatComponent,
+    ResultadosComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,

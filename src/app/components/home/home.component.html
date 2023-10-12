@@ -1,3 +1,46 @@
+<div class="container-fluid" style="justify-content: center; text-align: center;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row" style="margin-top: 8em;">
+				<div class="col-md-3"  >
+				</div>
+				<div class="col-md-5">
+                    <div class="card-grid">
+                        <div class="card">
+                          <a [routerLink]="['/juegos/ahorcado']">
+                            <h5 class="card-title">{{ cards[0].title }}</h5>
+                            <img [src]="cards[0].image" alt="Imagen de la tarjeta 1">
+                          </a>
+                        </div>
+                        <div class="card">
+                          <a [routerLink]="['/juegos/mayormenor']">
+                            <h5 class="card-title">{{ cards[1].title }}</h5>
+                            <img [src]="cards[1].image" alt="Imagen de la tarjeta 2">
+                          </a>
+                        </div>
+                        <div class="card">
+                          <a [routerLink]="['/juegos/preguntados']">
+                            <h5 class="card-title">{{ cards[2].title }}</h5>
+                            <img [src]="cards[2].image" alt="Imagen de la tarjeta 3">
+                          </a>
+                        </div>
+                        <div class="card">
+                          <a [routerLink]="['/juegos/atrapalafruta']">
+                            <h5 class="card-title">{{ cards[3].title }}</h5>
+                            <img [src]="cards[3].image" alt="Imagen de la tarjeta 4">
+                          </a>
+                        </div>
+                      </div>
+				</div>
+				<div class="col-md-2">
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+
+
 
 
 

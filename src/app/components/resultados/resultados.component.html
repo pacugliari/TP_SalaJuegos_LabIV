@@ -1,0 +1,17 @@
+<h1 class="text-primary text-center" >Resultados {{juego}}</h1>
+<table>
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Puntaje</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let puntaje of puntajes">
+        <td>{{ puntaje.usuario }}</td>
+        <td>{{ puntaje.puntaje }}</td>
+        <td>{{ puntaje.fecha | dateFormat}}</td>
+      </tr>
+    </tbody>
+  </table>
