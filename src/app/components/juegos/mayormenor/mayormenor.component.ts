@@ -69,27 +69,7 @@ export class MayormenorComponent {
     return `${rutaBase}${nombreArchivo}`;
   }
 
-  guardarPuntaje(){
-    Swal.fire({
-      title: '¿Esta seguro que quiere guardar el puntaje?',
-      text: 'Se reiniciara el contador de puntos,actualmente tiene: '+this.puntaje,
-      showDenyButton: true,
-      confirmButtonText: 'Guardar',
-      denyButtonText: `Cancelar`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.puntajeService.guardarPuntaje(this.puntaje,this.juego)
-          .then((respuesta)=>{
-            Swal.fire('Puntaje guardado', '', 'success')
-            this.puntaje = 0;
-          })
-          .catch((error)=>{
-            Swal.fire('Error al guardar puntaje', '', 'error')
-            console.log(error);
-          })
-      } else if (result.isDenied) {
-        //Swal.fire('Changes are not saved', '', 'info')
-      }
-    })
+  async guardarPuntaje(){
+    this.puntaje = await this.puntajeService.guardarPuntaje(this.puntaje,this.juego);
   }
 }

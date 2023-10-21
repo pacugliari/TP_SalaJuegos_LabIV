@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PerrosService } from 'src/app/services/perros.service';
+import { PuntajesService } from 'src/app/services/puntajes.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,7 @@ export class PreguntadosComponent {
   opcionCorrecta ?: string;
   puntaje : number = 0;
 
-  constructor(private perrosService:PerrosService){
+  constructor(private perrosService:PerrosService,private puntajesService: PuntajesService){
     this.pasarProximaPregunta();
     //console.log(this.perrosService.TraerOpciones());
   }
@@ -40,6 +41,10 @@ export class PreguntadosComponent {
       })
     }
     this.pasarProximaPregunta();
+  }
+
+  async guardarPuntaje(){
+    this.puntaje = await this.puntajesService.guardarPuntaje(this.puntaje,"AtrapaFruta");
   }
 
   pasarProximaPregunta() {

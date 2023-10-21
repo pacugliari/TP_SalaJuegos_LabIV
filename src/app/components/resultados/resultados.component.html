@@ -1,17 +1,25 @@
-<h1 class="text-primary text-center" >Resultados {{juego}}</h1>
-<table>
-    <thead>
-      <tr>
-        <th>Usuario</th>
-        <th>Puntaje</th>
-        <th>Fecha</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let puntaje of puntajes">
-        <td>{{ puntaje.usuario }}</td>
-        <td>{{ puntaje.puntaje }}</td>
-        <td>{{ puntaje.fecha | dateFormat}}</td>
-      </tr>
-    </tbody>
-  </table>
+
+<mat-card style="padding: 3%">
+  <h1 style="color: black;">Resultados:   <img *ngIf="mostrarGif" src="../../../assets/cargando.gif" alt="" style="height: 80px;width: 80px;"></h1>
+  <mat-tab-group [(selectedIndex)]="indice" dynamicWidth >
+    <mat-tab label="Ahorcado" >
+        <br>
+        <app-tabla-puntajes #tablaAhorcado ></app-tabla-puntajes>
+    </mat-tab>
+    <mat-tab label="Mayor o menor" >
+      <br>
+      <app-tabla-puntajes #tablaMayorMenor></app-tabla-puntajes>
+  
+    </mat-tab>
+    <mat-tab label="Preguntados" >
+      <br>
+      <app-tabla-puntajes #tablaPreguntados ></app-tabla-puntajes>
+  
+    </mat-tab>
+    <mat-tab label="Atrapa la fruta" >
+      <br>
+      <app-tabla-puntajes #tablaAtrapaFruta ></app-tabla-puntajes>
+  
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

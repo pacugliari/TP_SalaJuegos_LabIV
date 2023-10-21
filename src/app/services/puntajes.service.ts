@@ -3,6 +3,7 @@ import { Firestore, getDocs, collection ,addDoc,query, orderBy,onSnapshot } from
 import { authState,updateProfile,getAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { Puntaje } from '../models/puntaje';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Puntaje } from '../models/puntaje';
 export class PuntajesService {
   user$?: Observable<any | null>;
   puntajes : Puntaje[]=[];
+  puntaje : number = 0;
 
   constructor(private firestore : Firestore) {
     getAuth().onAuthStateChanged(()=>{
@@ -28,7 +30,7 @@ export class PuntajesService {
 
   }
 
-  async guardarPuntaje(puntaje:number,juego:string){
+  private async guardarPuntajeBase(puntaje:number,juego:string){
     let usuario = await this.obtenerUsuario();
     let data = {
       usuario : usuario.displayName ? usuario.displayName : usuario.email,
@@ -50,5 +52,36 @@ export class PuntajesService {
     });
     this.puntajes = this.puntajes.filter((element)=> element.juego === juego);
     return this.puntajes;
+  }
+
+  async guardarPuntaje(puntaje:number,juego:string){
+    this.puntaje = puntaje;
+    if(puntaje !== 0){
+      await Swal.fire({
+        title: '¿Esta seguro que quiere guardar el puntaje?',
+        text: 'Se reiniciara el contador de puntos,actualmente tiene: '+puntaje,
+        showDenyButton: true,
+        confirmButtonText: 'Guardar',
+        denyButtonText: `Cancelar`,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await this.guardarPuntajeBase(puntaje,juego)
+            .then( async (respuesta)=>{
+              await Swal.fire('Puntaje guardado', '', 'success')
+              this.puntaje = 0;
+            })
+            .catch((error)=>{
+              Swal.fire('Error al guardar puntaje', '', 'error')
+              console.log(error);
+            })
+        } else if (result.isDenied) {
+          //Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
+    }else{
+      Swal.fire('ERROR', 'No se puede guardar puntajes nulos', 'error')
+    }
+
+    return this.puntaje;
   }
 }

@@ -7,6 +7,9 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { canActivate, redirectUnauthorizedTo,redirectLoggedInTo } from '@angular/fire/auth-guard'
 import { ErrorComponent } from './components/error/error.component';
 import { ResultadosComponent } from './components/resultados/resultados.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { PerfilGuard } from './guards/perfil.guard';
+import { EncuestaRespuestasComponent } from './components/encuesta-respuestas/encuesta-respuestas.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
@@ -16,6 +19,8 @@ const routes: Routes = [
   { path: 'quien_soy', component: QuienSoyComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))},
   { path: 'resultados', component: ResultadosComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))},
   { path: 'juegos', loadChildren: () => import('./components/juegos/juegos.module').then(m => m.JuegosModule) },
+  { path: 'encuesta', component: EncuestaComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))},
+  { path: 'encuesta/respuestas', component: EncuestaRespuestasComponent,canActivate: [PerfilGuard]},
   { path: '**', component: ErrorComponent },// ** : RUTA POR DEFECTO
 ];
 

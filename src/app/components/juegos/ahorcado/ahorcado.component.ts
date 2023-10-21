@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PuntajesService } from 'src/app/services/puntajes.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +15,7 @@ export class AhorcadoComponent {
   intentos = 0;
   gano = false;
   perdio = false;
-  
+  puntaje = 0;
   letras = [
     "a",
     "b",
@@ -104,7 +105,7 @@ export class AhorcadoComponent {
     return this.palabras[indiceAleatorio];
   }
 
-  constructor(private router :Router) {
+  constructor(private router :Router,private puntajeService: PuntajesService) {
     this.palabraOculta = "_ ".repeat(this.palabra.length);
   }
 
@@ -134,7 +135,9 @@ export class AhorcadoComponent {
       Swal.fire({
         icon: 'success',
         title: 'Felicidades! Ganaste!!! 😁',
+        text: "Cantidad de puntos ganados: "+this.palabra.length
       })
+      this.puntaje += this.palabra.length;
     }
     if (this.intentos === 9) {
       this.perdio = true;
@@ -154,6 +157,10 @@ export class AhorcadoComponent {
     }
   }
   
+  async guardarPuntaje(){
+    this.puntaje = await this.puntajeService.guardarPuntaje(this.puntaje,this.title);
+  }
+
   empezarNuevoJuego(){
     this.router.navigateByUrl('/refreshAhorcado', {skipLocationChange: true}).then(()=> this.router.navigate(["juegos/ahorcado"]));
   }

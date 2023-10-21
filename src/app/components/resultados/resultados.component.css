@@ -1,42 +1,4 @@
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px; /* Ancho máximo de la tabla */
-    margin: 0 auto; /* Centrar la tabla */
-    border: 1px solid #ddd; /* Borde de la tabla */
-    border-radius: 5%;
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-  }
-  
-  thead {
-    background-color: #f2f2f2; /* Fondo del encabezado de la tabla */
-  }
-  
-  th {
-    background-color: #ffa900; /* Fondo de las celdas de encabezado */
-    color: black; /* Color del texto en el encabezado */
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f4f4f4; /* Fondo de filas pares */
-  }
-  
-  tr:nth-child(odd) {
-    background-color: #fff; /* Fondo de filas impares */
-  }
-  
-  /* Estilo para resaltar filas en hover */
-  tr:hover {
-    background-color: #ccc;
-  }
-  
-  /* Estilo para las celdas de fecha */
-  td:nth-child(3) {
-    font-weight: bold;
-    color: black;
-  }
+.mat-tab {
+  width: auto; /* o el ancho deseado */
+  overflow-x: auto;
+}

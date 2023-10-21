@@ -44,11 +44,11 @@ export class RegistroComponent {
     this.router.navigate(["login"]);
   }
 
-  registrar(){
+  async registrar(){
     if(this.verificarPasswords()){
-      this.userService.register(this.formReg.value)
-      .then(response =>{
-        this.userService.login(this.formReg.value)    
+      await this.userService.register(this.formReg.value)
+      .then(async response =>{
+        await this.userService.login(this.formReg.value)    
           .then(() =>{
             this.mensajes.informacion("Usuario autorizado");
             this.router.navigate(["home"])

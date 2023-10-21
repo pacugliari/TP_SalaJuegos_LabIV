@@ -25,6 +25,18 @@ import { ChatComponent } from './components/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultadosComponent } from './components/resultados/resultados.component';
 import { DateFormatPipe } from './pipes/date-format.pipe';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { TablaPuntajesComponent } from './components/tabla-puntajes/tabla-puntajes.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSelectModule } from '@angular/material/select';
+import { EncuestaRespuestasComponent } from './components/encuesta-respuestas/encuesta-respuestas.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +49,10 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     MenuPrincipalComponent,
     ChatComponent,
     ResultadosComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    TablaPuntajesComponent,
+    EncuestaComponent,
+    EncuestaRespuestasComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +68,15 @@ import { DateFormatPipe } from './pipes/date-format.pipe';
     MatIconModule,
     FormsModule,
     HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatTabsModule,
+    MatCardModule,
+    MatDialogModule,
+    MatListModule,
+    MatRadioModule,
+    MatSliderModule,
+    MatSelectModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())

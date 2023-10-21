@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { PuntajesService } from 'src/app/services/puntajes.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,18 +14,18 @@ export class AtrapalafrutaComponent {
   player?: { x: number; y: number };
   private fruits: { x: number; y: number; image: HTMLImageElement }[] = [];
   isGameRunning?: boolean;
-  score?: number = 0;
+  score: number = 0;
   frutasPerdidas: number = 0;
   limiteFrutas: number = 5;
   
   private playerImage?: HTMLImageElement;
   private fruitImages: HTMLImageElement[] = [];
 
-  constructor(private router:Router) {
+  constructor(private router:Router,private puntajesService:PuntajesService) {
     this.playerImage = new Image();
-    this.playerImage.src = '../../../../assets/atrapafruta/manos-abiertas.png'; // Ruta a la imagen del jugador
+    this.playerImage.src = '../../../../assets/atrapafruta/manos-abiertas.png';
 
-    // Rutas a las imágenes de frutas disponibles en assets
+
     const fruitPaths = [
       '../../../../assets/atrapafruta/fresa.png',
       '../../../../assets/atrapafruta/manzana.png',
@@ -32,7 +33,6 @@ export class AtrapalafrutaComponent {
       '../../../../assets/atrapafruta/platanos.png',
       '../../../../assets/atrapafruta/sandia.png',
       '../../../../assets/atrapafruta/uvas.png'
-      // Agrega más rutas de imágenes de frutas
     ];
 
     // Cargar imágenes de frutas en un array
@@ -92,7 +92,7 @@ export class AtrapalafrutaComponent {
 
       // Generar nuevas frutas con imágenes aleatorias
       if (Math.random() < 0.009) {
-        const x = Math.random() * 400;
+        const x = Math.random() * 390;
         const randomFruitIndex = Math.floor(Math.random() * this.fruitImages.length);
         const image = this.fruitImages[randomFruitIndex];
         this.fruits.push({ x, y: 0, image });
@@ -167,9 +167,13 @@ export class AtrapalafrutaComponent {
 
   movePlayer(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft' && this.player && this.player.x > 0) {
-      this.player.x -= 20; // Mover hacia la izquierda
+      this.player.x -= 30; // Mover hacia la izquierda
     } else if (event.key === 'ArrowRight' && this.player && this.player.x < 360) {
-      this.player.x += 20; // Mover hacia la derecha
+      this.player.x += 30; // Mover hacia la derecha
     }
+  }
+
+  async guardarPuntaje(){
+    this.score = await this.puntajesService.guardarPuntaje(this.score,"AtrapaFruta");
   }
 }

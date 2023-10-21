@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit{
 
   ingresar(){
 
-    this.userService.login(this.ingresoAnonimo ? {email:"anonimo@anonimo.com",password:"40549113"} : this.formLogin.value)
+    this.userService.login(this.ingresoAnonimo ? {email:"anonimo@anonimo.com",password:"anonimo"} : this.formLogin.value)
     .then((usuario) =>{
       this.mensajes.informacion("Usuario autorizado");
       this.router.navigate(["home"])

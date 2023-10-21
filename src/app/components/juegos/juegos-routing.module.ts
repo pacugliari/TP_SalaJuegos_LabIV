@@ -5,25 +5,26 @@ import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { MayormenorComponent } from './mayormenor/mayormenor.component';
 import { PreguntadosComponent } from './preguntados/preguntados.component';
 import { AtrapalafrutaComponent } from './atrapalafruta/atrapalafruta.component';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
 
 
 const routes: Routes = [
   {
     path: 'ahorcado',
-    component: AhorcadoComponent,
+    component: AhorcadoComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'mayormenor',
-    component: MayormenorComponent,
+    component: MayormenorComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'preguntados',
-    component: PreguntadosComponent,
+    component: PreguntadosComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
   {
     path: 'atrapalafruta',
-    component: AtrapalafrutaComponent,
+    component: AtrapalafrutaComponent,...canActivate(()=> redirectUnauthorizedTo(['/login']))
   },
 ];
 

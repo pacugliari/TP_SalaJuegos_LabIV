@@ -1,0 +1,66 @@
+<mat-card>
+    <mat-card-header>
+        <h2 style="color: black;" >Resultados de las encuestas</h2>
+    </mat-card-header>
+    <div class="row" style="max-width: 100%;">
+
+        <div class="col-12">
+          <table mat-table [dataSource]="lista">
+      
+            <ng-container matColumnDef="usuario">
+                <th mat-header-cell *matHeaderCellDef> Usuario </th>
+                <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
+            </ng-container>
+            <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.fecha | dateFormat }} </td>
+            </ng-container>
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.encuesta.nombre}} </td>
+            </ng-container>
+            <ng-container matColumnDef="apellido">
+                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                <td mat-cell *matCellDef="let element"> {{element.encuesta.apellido}} </td>
+            </ng-container>
+            <ng-container matColumnDef="edad">
+                <th mat-header-cell *matHeaderCellDef> Edad </th>
+                <td mat-cell *matCellDef="let element"> {{element.encuesta.edad}} </td>
+            </ng-container>
+            <ng-container matColumnDef="telefono">
+                <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                <td mat-cell *matCellDef="let element"> {{element.encuesta.telefono}} </td>
+            </ng-container>
+            <ng-container matColumnDef="comoNosEncontraste">
+                <th mat-header-cell *matHeaderCellDef> Como nos encontro </th>
+                <td mat-cell *matCellDef="let element"> {{element.encuesta.comoNosEncontraste}} </td>
+            </ng-container>
+            <ng-container matColumnDef="cuantoGusto">
+                <th mat-header-cell *matHeaderCellDef> Cuanto le gusto (1-10) </th>
+                <td mat-cell *matCellDef="let element"> {{element.encuesta.cuantoGusto}} </td>
+            </ng-container>
+            <ng-container matColumnDef="cualesJugaste">
+                <th mat-header-cell *matHeaderCellDef> Que juegos jugo </th>
+                <td mat-cell *matCellDef="let element">
+                    <button type="button" mat-icon-button matTooltip="Ver" (click)="ver(element.encuesta.cualesJugaste)">
+                        <mat-icon class="material-icons blue500" >remove_red_eye</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="recomendarias">
+                <th mat-header-cell *matHeaderCellDef> Nos recomienda </th>
+                <td mat-cell *matCellDef="let element"> {{element.encuesta.recomendarias}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+              aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+        <div class="col-4" >
+        </div>
+      </div>
+</mat-card>
